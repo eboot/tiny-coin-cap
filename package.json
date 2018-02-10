@@ -1,0 +1,42 @@
+{
+	"name": "tiny-coin-cap-api",
+	"author": "nitrohorse",
+	"license": "GPL-3.0",
+	"version": "1.0.0",
+	"description": "",
+	"main": "server.js",
+	"scripts": {
+		"serve": "nodemon server.js",
+		"snyk": "snyk test",
+		"nsp": "nsp check --output summary",
+		"vuln-check": "npm-run-all --parallel nsp snyk",
+		"ncu": "ncu",
+		"depcheck": "depcheck || true",
+		"update-check": "npm-run-all --parallel ncu depcheck",
+		"dep-check": "npm-run-all --parallel vuln-check update-check",
+		"lint": "standard",
+		"lint-fix": "standard --fix"
+	},
+	"keywords": [
+		"coinmarketcap",
+		"cryptocurrency"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/nitrohorse/tiny-coin-cap-api"
+	},
+	"bugs": {
+		"url": "https://github.com/nitrohorse/tiny-coin-cap-api/issues"
+	},
+	"devDependencies": {
+		"nodemon": "^1.14.12",
+		"npm-run-all": "^4.1.2",
+		"nsp": "^3.1.0",
+		"standard": "^10.0.3"
+	},
+	"dependencies": {
+		"express": "^4.16.2",
+		"node-cache": "^4.1.1",
+		"request": "^2.83.0"
+	}
+}
