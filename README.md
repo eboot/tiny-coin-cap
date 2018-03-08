@@ -6,17 +6,17 @@ Proof of concept for an API using Node.js and Express that could query [Coin Mar
 * Clone the repository
 * `cd` into the cloned directory
 * Install tools:
-	* [Node.js and npm](https://www.npmjs.com/get-npm)
-	* [yarn](https://yarnpkg.com/en/) (optional)
+	* [Node.js](https://nodejs.org/en/)
+	* [yarn](https://yarnpkg.com/en/)
 	* [npm-check-updates](https://github.com/tjunnone/npm-check-updates)
-		* `yarn global add npm-check-updates` or `npm install --global npm-check-updates`
+		* `yarn global add npm-check-updates`
 	* [depcheck](https://www.npmjs.com/package/depcheck)
-		* `yarn global add depcheck` or `npm install --global depcheck`
+		* `yarn global add depcheck`
 	* [snyk](https://snyk.io)
-		* `yarn global add snyk` or `npm install --global snyk`
+		* `yarn global add snyk`
 * Install dependencies: 
-	* `yarn` or `npm install`
+	* `yarn`
 * Start the server on `localhost:8000/api/`:
-  * `yarn serve` or `npm run serve`
+  * `yarn serve`
 * Use a tool like [Postman](https://www.getpostman.com/) to query the api:
   * `http://localhost:8000/api/coins`
