@@ -1,5 +1,5 @@
 {
-  "name": "tiny-coin-cap-api",
+  "name": "tiny-coin-cap",
   "author": "nitrohorse",
   "license": "GPL-3.0",
   "version": "1.0.0",
@@ -23,10 +23,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/nitrohorse/tiny-coin-cap-api"
+    "url": "https://github.com/nitrohorse/tiny-coin-cap"
   },
   "bugs": {
-    "url": "https://github.com/nitrohorse/tiny-coin-cap-api/issues"
+    "url": "https://github.com/nitrohorse/tiny-coin-cap/issues"
   },
   "devDependencies": {
     "nodemon": "^1.17.1",
