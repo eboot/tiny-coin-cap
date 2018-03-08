@@ -2,17 +2,21 @@
 
 const express = require('express')
 const NodeCache = require('node-cache')
-const mockData = require('./mock')
 const request = require('request')
 const app = express()
+const path = require('path')
 const port = process.env.PORT || 8000
-// const cache = new NodeCache({ stdTTL: 5, checkperiod: 10 }) // for mock data
 const cache = new NodeCache({ stdTTL: 600, checkperiod: 620 })
 const router = express.Router()
 const whiteList = ['localhost:8000']
-// const apiEndPoint = 'http://localhost:8000/api/mockdata' // for mock data
 const apiEndPoint = 'https://api.coinmarketcap.com/v1/ticker/?limit=50'
 const cacheKey = 'coins'
+
+// For mocking
+// const mockUnparsed = require('./mock-unparsed')
+// const mockParsed = require('./mock-parsed')
+// const cache = new NodeCache({ stdTTL: 5, checkperiod: 10 }) // for mock data
+// const apiEndPoint = 'http://localhost:8000/api/mockdata' // for mock data
 
 // UTILS -----------------------------------------------------------------------
 //
@@ -70,15 +74,14 @@ const errorHandler = (err, req, res, next) => {
 
 // ROUTES ----------------------------------------------------------------------
 //
-router.get('/', (req, res) => {
-  res.json({ message: 'Hooray! Welcome to our API!' })
-})
-
-router.route('/coins')
+router.route('/')
 .get((req, res) => {
   if (!isCacheEmpty(cacheKey)) {
     console.log('Cache not empty, returning value')
-    res.send(getValueInCache(cacheKey))
+    const coins = getValueInCache(cacheKey)
+    res.render('homepage', {
+      coins: coins
+    })
   } else {
     console.log('Cache is empty, fetching data')
     request(apiEndPoint, (error, response, body) => {
@@ -87,7 +90,9 @@ router.route('/coins')
         cache.set(cacheKey, coins, (err, success) => {
           if (success && !err) {
             console.log('Successfully cached data')
-            res.send(coins)
+            res.render('homepage', {
+              coins: coins
+            })
           } else {
             console.error('Error caching data')
             res.status(500)
@@ -98,16 +103,33 @@ router.route('/coins')
   }
 })
 
-router.route('/mockdata')
-.get((req, res) => {
-  console.log('Getting mock data')
-  res.json(mockData)
-})
+// MOCK DATA -------------------------------------------------------------------
+// router.get('/mock', (req, res) => {
+//   res.render('homepage', {
+//     coins: mockParsed
+//   })
+// })
+
+// router.route('/mock-unparsed')
+// .get((req, res) => {
+//   console.log('Getting unparsed mock data')
+//   res.json(mockUnparsed)
+// })
+
+// router.route('/mock-parsed')
+// .get((req, res) => {
+//   console.log('Getting parsed mock data')
+//   res.json(mockParsed)
+// })
 
 // SERVER STARTUP --------------------------------------------------------------
 //
-app.use('/api', router)
+app.use(router)
 app.use(errorHandler)
+app.use(express.static('public'))
+
+app.set('view engine', 'pug')
+app.set('views', path.join(__dirname, 'public'))
 
 app.listen(port, () => {
   console.log('We are live on ' + port)

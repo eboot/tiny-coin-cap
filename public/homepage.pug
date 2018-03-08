@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    title Tiny Coin Cap
+    //- link(rel='stylesheet', href='normalize.css')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='pure.css')
+  body
+    h1 Tiny Coin Cap
+    table.pure-table.pure-table-horizontal
+      thead
+        tr
+          th #
+          th Name
+          th Price (USD)
+          th Change (24hr)
+          th Market Cap (USD)
+      tbody
+        each coin, index in coins
+          tr
+            td= index + 1
+            td= coin.name
+            td= coin.price_usd
+            td= coin.percent_change_24h
+            td= coin.market_cap_usd
