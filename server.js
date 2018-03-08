@@ -6,10 +6,12 @@ const mockData = require('./mock')
 const request = require('request')
 const app = express()
 const port = process.env.PORT || 8000
-const cache = new NodeCache({ stdTTL: 5, checkperiod: 10 })
+// const cache = new NodeCache({ stdTTL: 5, checkperiod: 10 }) // for mock data
+const cache = new NodeCache({ stdTTL: 600, checkperiod: 620 })
 const router = express.Router()
 const whiteList = ['localhost:8000']
-const apiEndPoint = 'http://localhost:8000/api/mockdata'
+// const apiEndPoint = 'http://localhost:8000/api/mockdata' // for mock data
+const apiEndPoint = 'https://api.coinmarketcap.com/v1/ticker/?limit=50'
 const cacheKey = 'coins'
 
 // UTILS -----------------------------------------------------------------------
@@ -34,6 +36,21 @@ const isCacheEmpty = key => {
 
 const getValueInCache = key => {
   return cache.get(key)
+}
+
+const getCoins = coins => {
+  const parsedCoins = []
+
+  for (let i = 0; i < coins.length; i++) {
+    const coin = coins[i]
+    parsedCoins.push({
+      'name': coin['name'],
+      'price_usd': coin['price_usd'],
+      'percent_change_24h': coin['percent_change_24h'],
+      'market_cap_usd': coin['market_cap_usd']
+    })
+  }
+  return parsedCoins
 }
 
 // MIDDLEWARE ------------------------------------------------------------------
@@ -61,15 +78,16 @@ router.route('/coins')
 .get((req, res) => {
   if (!isCacheEmpty(cacheKey)) {
     console.log('Cache not empty, returning value')
-    res.send(JSON.parse(getValueInCache(cacheKey)))
+    res.send(getValueInCache(cacheKey))
   } else {
     console.log('Cache is empty, fetching data')
     request(apiEndPoint, (error, response, body) => {
       if (response.statusCode === 200 && !error) {
-        cache.set(cacheKey, body, (err, success) => {
+        const coins = getCoins(JSON.parse(body))
+        cache.set(cacheKey, coins, (err, success) => {
           if (success && !err) {
             console.log('Successfully cached data')
-            res.send(JSON.parse(body))
+            res.send(coins)
           } else {
             console.error('Error caching data')
             res.status(500)
