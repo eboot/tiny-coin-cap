@@ -8,7 +8,7 @@ const path = require('path')
 const port = process.env.PORT || 8000
 const cache = new NodeCache({ stdTTL: 600, checkperiod: 620 })
 const router = express.Router()
-const whiteList = ['localhost:8000']
+const whiteList = ['https://thawing-bastion-99102.herokuapp.com/']
 const apiEndPoint = 'https://api.coinmarketcap.com/v1/ticker/?limit=50'
 const cacheKey = 'coins'
 
@@ -60,6 +60,7 @@ const getCoins = coins => {
 // MIDDLEWARE ------------------------------------------------------------------
 //
 router.use((req, res, next) => {
+  console.log('req.headers.host:', req.headers.host)
   if (whiteList.indexOf(req.headers.host) !== -1) {
     next()
   } else {
