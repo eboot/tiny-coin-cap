@@ -12,12 +12,6 @@ Powered by [Coin Market Cap](https://coinmarketcap.com/api/). Inspired by [Legib
 * Install tools:
 	* [Node.js](https://nodejs.org/en/)
 	* [yarn](https://yarnpkg.com/en/)
-	* [npm-check-updates](https://github.com/tjunnone/npm-check-updates)
-		* `yarn global add npm-check-updates`
-	* [depcheck](https://www.npmjs.com/package/depcheck)
-		* `yarn global add depcheck`
-	* [snyk](https://snyk.io)
-		* `yarn global add snyk`
 * Install dependencies: 
 	* `yarn`
 * Start the server:
