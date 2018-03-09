@@ -1,6 +1,6 @@
 # Tiny Coin Cap
 
-https://tinycoincap.herokuapp.com
+https://tinycoincap.now.sh (validate deployed code here: https://tinycoincap.now.sh/_src)
 
 Minimal cryptocurrency market cap clone rendered server-side so visitors who value their privacy can leave JavaScript disabled with no impact to site functionality.
 
