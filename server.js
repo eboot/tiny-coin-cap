@@ -6,7 +6,7 @@ const request = require('request')
 const app = express()
 const path = require('path')
 const port = process.env.PORT || 8000
-const cache = new NodeCache({ stdTTL: 600, checkperiod: 620 })
+const cache = new NodeCache({ stdTTL: 360, checkperiod: 400 })
 const router = express.Router()
 const apiEndPoint = 'https://api.coinmarketcap.com/v1/ticker/?limit=50'
 const cacheKey = 'coins'

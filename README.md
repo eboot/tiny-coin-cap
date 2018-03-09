@@ -2,7 +2,7 @@
 
 https://tinycoincap.herokuapp.com
 
-Minimal cryptocurrency market cap clone rendered server-side. Since no JavaScript is required, visitors can maintain their privacy a bit more. Data is cached in memory for 10 minutes using [node-cache](https://mpneuried.github.io/nodecache/) to respect Coin Market Cap's request limit.
+Minimal cryptocurrency market cap clone rendered server-side. Since no JavaScript is required, visitors can maintain their privacy a bit more.
 
 Powered by [Coin Market Cap](https://coinmarketcap.com/api/). Inspired by [Legible News](https://legiblenews.com/).
 
