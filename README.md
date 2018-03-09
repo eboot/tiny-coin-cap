@@ -2,7 +2,7 @@
 
 https://tinycoincap.herokuapp.com
 
-Minimal cryptocurrency market cap clone rendered server-side. Since no JavaScript is required, visitors can maintain their privacy a bit more.
+Minimal cryptocurrency market cap clone rendered server-side so visitors who value their privacy can leave JavaScript disabled with no impact to site functionality.
 
 Powered by [Coin Market Cap](https://coinmarketcap.com/api/). Inspired by [Legible News](https://legiblenews.com/).
 
