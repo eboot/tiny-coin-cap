@@ -66,33 +66,33 @@ const errorHandler = (err, req, res, next) => {
 // ROUTES ----------------------------------------------------------------------
 //
 router.route('/')
-.get((req, res) => {
-  if (!isCacheEmpty(cacheKey)) {
-    console.log('Cache not empty, returning value')
-    const coins = getValueInCache(cacheKey)
-    res.render('homepage', {
-      coins: coins
-    })
-  } else {
-    console.log('Cache is empty, fetching data')
-    request(apiEndPoint, (error, response, body) => {
-      if (response.statusCode === 200 && !error) {
-        const coins = getCoins(JSON.parse(body))
-        cache.set(cacheKey, coins, (err, success) => {
-          if (success && !err) {
-            console.log('Successfully cached data')
-            res.render('homepage', {
-              coins: coins
-            })
-          } else {
-            console.error('Error caching data')
-            res.status(500)
-          }
-        })
-      }
-    })
-  }
-})
+  .get((req, res) => {
+    if (!isCacheEmpty(cacheKey)) {
+      console.log('Cache not empty, returning value')
+      const coins = getValueInCache(cacheKey)
+      res.render('homepage', {
+        coins: coins
+      })
+    } else {
+      console.log('Cache is empty, fetching data')
+      request(apiEndPoint, (error, response, body) => {
+        if (response.statusCode === 200 && !error) {
+          const coins = getCoins(JSON.parse(body))
+          cache.set(cacheKey, coins, (err, success) => {
+            if (success && !err) {
+              console.log('Successfully cached data')
+              res.render('homepage', {
+                coins: coins
+              })
+            } else {
+              console.error('Error caching data')
+              res.status(500)
+            }
+          })
+        }
+      })
+    }
+  })
 
 // MOCK DATA -------------------------------------------------------------------
 // router.get('/mock', (req, res) => {
