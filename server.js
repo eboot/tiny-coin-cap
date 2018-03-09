@@ -3,6 +3,7 @@
 const express = require('express')
 const NodeCache = require('node-cache')
 const request = require('request')
+const moment = require('moment')
 const app = express()
 const path = require('path')
 const port = process.env.PORT || 8000
@@ -50,6 +51,13 @@ const getCoins = coins => {
   return parsedCoins
 }
 
+const renderHomePage = (res, cachedData) => {
+  res.render('homepage', {
+    timeOfUpdate: cachedData.timeOfUpdate,
+    coins: cachedData.coins
+  })
+}
+
 // MIDDLEWARE ------------------------------------------------------------------
 //
 const errorHandler = (err, req, res, next) => {
@@ -63,21 +71,20 @@ router.route('/')
   .get((req, res) => {
     if (!isCacheEmpty(cacheKey)) {
       console.log('Cache not empty, returning value')
-      const coins = getValueInCache(cacheKey)
-      res.render('homepage', {
-        coins: coins
-      })
+      const cachedData = getValueInCache(cacheKey)
+      renderHomePage(res, cachedData)
     } else {
       console.log('Cache is empty, fetching data')
       request(apiEndPoint, (error, response, body) => {
         if (response.statusCode === 200 && !error) {
-          const coins = getCoins(JSON.parse(body))
-          cache.set(cacheKey, coins, (err, success) => {
+          const dataToCache = {
+            timeOfUpdate: moment().format('MMMM Do YYYY, h:mm:ss a'),
+            coins: getCoins(JSON.parse(body))
+          }
+          cache.set(cacheKey, dataToCache, (err, success) => {
             if (success && !err) {
               console.log('Successfully cached data')
-              res.render('homepage', {
-                coins: coins
-              })
+              renderHomePage(res, dataToCache)
             } else {
               console.error('Error caching data')
               res.status(500)
