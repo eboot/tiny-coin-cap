@@ -1,6 +1,10 @@
-# Tiny Coin Cap API
+# Tiny Coin Cap
 
-Proof of concept for an API using Node.js and Express that could query [Coin Market Cap's API](https://coinmarketcap.com/api/) while respecting their 10 minute request limit interval; caching results in memory using [node-cache](https://mpneuried.github.io/nodecache/).
+https://tinycoincap.herokuapp.com
+
+Minimal cryptocurrency market cap clone rendered server-side. Since no JavaScript is required, visitors can maintain their privacy a bit more. Data is cached in memory for 10 minutes using [node-cache](https://mpneuried.github.io/nodecache/) to respect Coin Market Cap's request limit.
+
+Powered by [Coin Market Cap](https://coinmarketcap.com/api/). Inspired by [Legible News](https://legiblenews.com/).
 
 ## Develop Locally
 * Clone the repository
@@ -16,7 +20,5 @@ Proof of concept for an API using Node.js and Express that could query [Coin Mar
 		* `yarn global add snyk`
 * Install dependencies: 
 	* `yarn`
-* Start the server on `localhost:8000/api/`:
+* Start the server:
   * `yarn serve`
-* Use a tool like [Postman](https://www.getpostman.com/) to query the api:
-  * `http://localhost:8000/api/coins`
