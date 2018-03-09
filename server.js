@@ -53,7 +53,7 @@ const getCoins = coins => {
 
 const renderHomePage = (res, cachedData) => {
   res.render('homepage', {
-    timeOfUpdate: cachedData.timeOfUpdate,
+    timeOfUpdate: cachedData.timeOfUpdate.fromNow(),
     coins: cachedData.coins
   })
 }
@@ -78,7 +78,7 @@ router.route('/')
       request(apiEndPoint, (error, response, body) => {
         if (response.statusCode === 200 && !error) {
           const dataToCache = {
-            timeOfUpdate: moment().format('MMMM Do YYYY, h:mm:ss a'),
+            timeOfUpdate: moment(),
             coins: getCoins(JSON.parse(body))
           }
           cache.set(cacheKey, dataToCache, (err, success) => {
