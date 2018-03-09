@@ -8,7 +8,7 @@ const path = require('path')
 const port = process.env.PORT || 8000
 const cache = new NodeCache({ stdTTL: 360, checkperiod: 400 })
 const router = express.Router()
-const apiEndPoint = 'https://api.coinmarketcap.com/v1/ticker/?limit=50'
+const apiEndPoint = 'https://api.coinmarketcap.com/v1/ticker'
 const cacheKey = 'coins'
 
 // For mocking
