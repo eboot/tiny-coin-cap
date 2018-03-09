@@ -39,5 +39,9 @@ html
             td= index + 1
             td= coin.name
             td= coin.price_usd
-            td= coin.percent_change_24h
+
+            if coin.percent_change_24h > 0
+              td.change-increase= coin.percent_change_24h
+            else
+              td.change-decrease= coin.percent_change_24h
             td= coin.market_cap_usd

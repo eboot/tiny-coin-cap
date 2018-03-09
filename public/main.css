@@ -12,3 +12,11 @@ a:hover {
   background-color: rgb(248, 105, 34);
   color: white;
 }
+
+.change-increase {
+  color: rgb(146, 206, 146);
+}
+
+.change-decrease {
+  color: rgb(248, 105, 34);
+}
