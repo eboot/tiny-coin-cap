@@ -11,12 +11,6 @@ const router = express.Router()
 const apiEndPoint = 'https://api.coinmarketcap.com/v1/ticker'
 const cacheKey = 'coins'
 
-// For mocking
-// const mockUnparsed = require('./mock-unparsed')
-// const mockParsed = require('./mock-parsed')
-// const cache = new NodeCache({ stdTTL: 5, checkperiod: 10 }) // for mock data
-// const apiEndPoint = 'http://localhost:8000/api/mockdata' // for mock data
-
 // UTILS -----------------------------------------------------------------------
 //
 const doesKeyExistInCache = key => {
@@ -93,25 +87,6 @@ router.route('/')
       })
     }
   })
-
-// MOCK DATA -------------------------------------------------------------------
-// router.get('/mock', (req, res) => {
-//   res.render('homepage', {
-//     coins: mockParsed
-//   })
-// })
-
-// router.route('/mock-unparsed')
-// .get((req, res) => {
-//   console.log('Getting unparsed mock data')
-//   res.json(mockUnparsed)
-// })
-
-// router.route('/mock-parsed')
-// .get((req, res) => {
-//   console.log('Getting parsed mock data')
-//   res.json(mockParsed)
-// })
 
 // SERVER STARTUP --------------------------------------------------------------
 //
