@@ -1,10 +1,12 @@
 # Tiny Coin Cap
 
-https://tinycoincap.now.sh (validate deployed code here: https://tinycoincap.now.sh/_src)
+https://tinycoincap.now.sh
 
-Minimal cryptocurrency market cap clone rendered server-side so visitors who value their privacy can leave JavaScript disabled with no impact to site functionality.
+Minimal [CoinMarketCap.com](https://coinmarketcap.com/) clone rendered server-side so visitors who value their privacy can leave JavaScript disabled with no impact to site functionality. Powered by [CoinMarketCap.com](https://coinmarketcap.com/api/). Inspired by [LegibleNews.com](https://legiblenews.com/) and [LiteMarketCap.com](https://litemarketcap.com/).
 
-Powered by [Coin Market Cap](https://coinmarketcap.com/api/). Inspired by [Legible News](https://legiblenews.com/) and [Lite Market Cap](https://litemarketcap.com/).
+Since this is an open-source project hosted freely on [ZEIT](https://zeit.co/) using [Now](https://zeit.co/now), you can validate the deployed code by appending `_src` to the URL (https://tinycoincap.now.sh/_src) and view the live logs by appending `_logs` to the URL (https://tinycoincap.now.sh/_logs).
+
+
 
 ## Develop Locally
 * Clone the repository
