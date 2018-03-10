@@ -36,6 +36,13 @@ const getValueInCache = key => {
   return cache.get(key)
 }
 
+const formatPercentage = percentage => {
+  if (percentage[0] !== '-') {
+    percentage = '+' + percentage
+  }
+  return percentage
+}
+
 const formatAmount = amount => {
   if (amount < 1000) {
     return amount
@@ -62,7 +69,7 @@ const getCoins = coins => {
     parsedCoins.push({
       'name': coin['name'],
       'price_usd': formatAmount(coin['price_usd']),
-      'percent_change_24h': coin['percent_change_24h'],
+      'percent_change_24h': formatPercentage(coin['percent_change_24h']),
       'market_cap_usd': formatAmount(coin['market_cap_usd'])
     })
   }
