@@ -36,6 +36,24 @@ const getValueInCache = key => {
   return cache.get(key)
 }
 
+const formatAmount = amount => {
+  if (amount < 1000) {
+    return amount
+  }
+
+  // add commas
+  // https://stackoverflow.com/a/10899795
+  const parts = amount.split('.')
+  let amountWithCommas = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',') + (parts[1] ? '.' + parts[1] : '')
+
+  // if amount ends with .0 (such as a typical market cap amount)
+  if (amountWithCommas.slice(-2) === '.0') {
+    amountWithCommas = amountWithCommas.slice(0, -2)
+  }
+
+  return amountWithCommas
+}
+
 const getCoins = coins => {
   const parsedCoins = []
 
@@ -43,9 +61,9 @@ const getCoins = coins => {
     const coin = coins[i]
     parsedCoins.push({
       'name': coin['name'],
-      'price_usd': coin['price_usd'],
+      'price_usd': formatAmount(coin['price_usd']),
       'percent_change_24h': coin['percent_change_24h'],
-      'market_cap_usd': coin['market_cap_usd']
+      'market_cap_usd': formatAmount(coin['market_cap_usd'])
     })
   }
   return parsedCoins
