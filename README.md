@@ -4,7 +4,7 @@ https://tinycoincap.now.sh (validate deployed code here: https://tinycoincap.now
 
 Minimal cryptocurrency market cap clone rendered server-side so visitors who value their privacy can leave JavaScript disabled with no impact to site functionality.
 
-Powered by [Coin Market Cap](https://coinmarketcap.com/api/). Inspired by [Legible News](https://legiblenews.com/).
+Powered by [Coin Market Cap](https://coinmarketcap.com/api/). Inspired by [Legible News](https://legiblenews.com/) and [Lite Market Cap](https://litemarketcap.com/).
 
 ## Develop Locally
 * Clone the repository
