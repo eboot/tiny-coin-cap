@@ -11,7 +11,7 @@ html
     link(rel='stylesheet', href='pure.css')
     link(rel='stylesheet', href='main.css')
   body
-    h2 Tiny Coin Cap
+    h1 Tiny Coin Cap
     p
       a(href='https://github.com/nitrohorse/tiny-coin-cap', target='_blank' rel='external noopener noreferrer') Source Code
       span  | 
@@ -32,7 +32,7 @@ html
           th Name
           th Price (USD)
           th Change (24hr)
-          th Market Cap (USD)
+          th.hide-on-mobile Market Cap (USD)
       tbody
         each coin, index in coins
           tr
@@ -44,4 +44,4 @@ html
               td.change-increase= coin.percent_change_24h
             else
               td.change-decrease= coin.percent_change_24h
-            td= coin.market_cap_usd
+            td.hide-on-mobile= coin.market_cap_usd
