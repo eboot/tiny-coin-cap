@@ -1,6 +1,7 @@
 # Tiny Coin Cap
 
 [![Known Vulnerabilities](https://snyk.io/test/github/nitrohorse/tiny-coin-cap/badge.svg)](https://snyk.io/test/github/nitrohorse/tiny-coin-cap)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fnitrohorse%2Ftiny-coin-cap.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fnitrohorse%2Ftiny-coin-cap?ref=badge_shield)
 
 https://tinycoincap.now.sh
 
@@ -18,3 +19,7 @@ Since this is an open-source project hosted freely on [ZEIT](https://zeit.co/) u
 	* `yarn`
 * Start the server:
   * `yarn serve`
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fnitrohorse%2Ftiny-coin-cap.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fnitrohorse%2Ftiny-coin-cap?ref=badge_large)
