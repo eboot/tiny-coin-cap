@@ -40,8 +40,12 @@ a:hover {
   text-align: center;
 }
 
-#market-cap {
+td, th {
   text-align: right;
+}
+
+#align-left {
+  text-align: left;
 }
 
 @media only screen and (max-width: 600px) {
