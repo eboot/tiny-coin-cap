@@ -36,7 +36,8 @@ html
           th#align-left Coin
           th.hide-on-mobile Market Cap (USD)
           th Price (USD)
-          th Change (24hr)
+          th.hide-on-mobile Change (1h)
+          th Change (24h)
           th Change (7d)
       tbody
         each coin, index in coins
@@ -45,6 +46,11 @@ html
             td#align-left= coin.name
             td.hide-on-mobile= coin.market_cap_usd
             td= coin.price_usd
+
+            if coin.percent_change_1h > 0
+              td.change-increase.hide-on-mobile= coin.percent_change_1h
+            else
+              td.change-decrease.hide-on-mobile= coin.percent_change_1h
 
             if coin.percent_change_24h > 0
               td.change-increase= coin.percent_change_24h

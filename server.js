@@ -69,6 +69,7 @@ const getCoins = coins => {
     parsedCoins.push({
       'name': coin['name'],
       'price_usd': formatAmount(coin['price_usd']),
+      'percent_change_1h': formatPercentage(coin['percent_change_1h']),
       'percent_change_24h': formatPercentage(coin['percent_change_24h']),
       'percent_change_7d': formatPercentage(coin['percent_change_7d']),
       'market_cap_usd': formatAmount(coin['market_cap_usd'])
