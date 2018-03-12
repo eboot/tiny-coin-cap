@@ -9,9 +9,6 @@ html {
 
 body {
   padding: 10px;
-  max-width: 551px;
-  margin-right: auto;
-  margin-left: auto;
 }
 
 h1 {
@@ -49,17 +46,21 @@ td, th {
 }
 
 @media only screen and (max-width: 600px) {
-  #top {
-    text-align: left;
-  }
-
   .hide-on-mobile {
     display: none;
   }
 }
 
+@media only screen and (max-width: 550px) {
+  body {
+    padding: 10px 0px 10px 0px;
+  }
+}
+
 /* OVERRIDES */
 .pure-table {
+  margin-left: auto;
+  margin-right: auto;
   border: none;
 }
 

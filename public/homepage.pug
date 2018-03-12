@@ -33,19 +33,25 @@ html
       thead
         tr
           th #
-          th#align-left Name
+          th#align-left Coin
+          th.hide-on-mobile Market Cap (USD)
           th Price (USD)
           th Change (24hr)
-          th.hide-on-mobile Market Cap (USD)
+          th Change (7d)
       tbody
         each coin, index in coins
           tr
             td= index + 1
             td#align-left= coin.name
+            td.hide-on-mobile= coin.market_cap_usd
             td= coin.price_usd
 
             if coin.percent_change_24h > 0
               td.change-increase= coin.percent_change_24h
             else
               td.change-decrease= coin.percent_change_24h
-            td.hide-on-mobile= coin.market_cap_usd
+
+            if coin.percent_change_7d > 0
+              td.change-increase= coin.percent_change_7d
+            else
+              td.change-decrease= coin.percent_change_7d
