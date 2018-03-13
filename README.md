@@ -1,6 +1,7 @@
 # Tiny Coin Cap
 
 [![Dependency Status](https://david-dm.org/nitrohorse/tiny-coin-cap.svg)](https://david-dm.org/nitrohorse/tiny-coin-cap)
+[![devDependency Status](https://david-dm.org/nitrohorse/tiny-coin-cap/dev-status.svg)](https://david-dm.org/nitrohorse/tiny-coin-cap?type=dev)
 [![Known Vulnerabilities](https://snyk.io/test/github/nitrohorse/tiny-coin-cap/badge.svg)](https://snyk.io/test/github/nitrohorse/tiny-coin-cap)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fnitrohorse%2Ftiny-coin-cap.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fnitrohorse%2Ftiny-coin-cap?ref=badge_shield)
 
