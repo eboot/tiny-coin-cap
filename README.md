@@ -5,6 +5,7 @@
 [![Standard Style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![License](https://img.shields.io/badge/license-GPLv3-yellow.svg)](https://github.com/nitrohorse/tiny-coin-cap/blob/master/LICENSE)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fnitrohorse%2Ftiny-coin-cap.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fnitrohorse%2Ftiny-coin-cap?ref=badge_shield)
+[![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/nitrohorse)
 
 https://tinycoincap.now.sh
 
