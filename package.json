@@ -8,7 +8,7 @@
   "scripts": {
     "serve": "nodemon server.js",
     "lint": "standard",
-    "lint-fix": "standard --fix"
+    "lint:fix": "standard --fix"
   },
   "keywords": [
     "coinmarketcap",

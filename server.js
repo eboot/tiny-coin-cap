@@ -49,7 +49,11 @@ const formatAmount = amount => {
   if (parts[1]) {
     if (parts[0] > 0) { // if greater than or equal to $1
       // trim to hundreths place
+      console.log('PART0:', parts[0])
+      console.log('PART1 BEFORE:', parts[1])
       parts[1] = parts[1].slice(0, 2)
+      console.log('PART1 AFTER:', parts[1])
+      console.log('------')
     } else {
       // trim to millionths place
       parts[1] = parts[1].slice(0, 6)
