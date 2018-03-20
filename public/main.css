@@ -33,16 +33,16 @@ a:hover {
   color: rgb(248, 105, 34);
 }
 
-#top {
-  text-align: center;
-}
-
 td, th {
   text-align: right;
 }
 
 #align-left {
   text-align: left;
+}
+
+#align-center {
+  text-align: center;
 }
 
 @media only screen and (max-width: 700px) {
