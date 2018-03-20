@@ -2,14 +2,16 @@
 
 const express = require('express')
 const NodeCache = require('node-cache')
-const request = require('request')
+const requestPromise = require('request-promise')
+const bluebird = require('bluebird')
 const moment = require('moment')
 const app = express()
 const path = require('path')
 const port = process.env.PORT || 8000
 const cache = new NodeCache({ stdTTL: 360, checkperiod: 400 })
 const router = express.Router()
-const apiEndPoint = 'https://api.coinmarketcap.com/v1/ticker'
+const coinApiEndPoint = 'https://api.coinmarketcap.com/v1/ticker'
+const totalMarketCapApiEndPoint = 'https://api.coinmarketcap.com/v1/global/'
 const cacheKey = 'coins'
 
 // UTILS -----------------------------------------------------------------------
@@ -44,16 +46,13 @@ const formatPercentage = percentage => {
 }
 
 const formatAmount = amount => {
+  amount = amount.toString()
   const parts = amount.split('.')
 
   if (parts[1]) {
     if (parts[0] > 0) { // if greater than or equal to $1
       // trim to hundreths place
-      console.log('PART0:', parts[0])
-      console.log('PART1 BEFORE:', parts[1])
       parts[1] = parts[1].slice(0, 2)
-      console.log('PART1 AFTER:', parts[1])
-      console.log('------')
     } else {
       // trim to millionths place
       parts[1] = parts[1].slice(0, 6)
@@ -78,7 +77,11 @@ const formatAmount = amount => {
   return amountWithCommas
 }
 
-const getCoins = coins => {
+const parseTotalMarketCap = totalMarketCap => {
+  return formatAmount(totalMarketCap['total_market_cap_usd'])
+}
+
+const parseCoins = coins => {
   const parsedCoins = []
 
   for (let i = 0; i < coins.length; i++) {
@@ -98,7 +101,8 @@ const getCoins = coins => {
 const renderHomePage = (res, cachedData) => {
   res.render('homepage', {
     timeOfUpdate: cachedData.timeOfUpdate.fromNow(),
-    coins: cachedData.coins
+    coins: cachedData.coins,
+    totalMarketCap: cachedData.totalMarketCap
   })
 }
 
@@ -119,12 +123,21 @@ router.route('/')
       renderHomePage(res, cachedData)
     } else {
       console.log('Cache is empty, fetching data')
-      request(apiEndPoint, (error, response, body) => {
-        if (response.statusCode === 200 && !error) {
+      bluebird.all([
+        requestPromise(coinApiEndPoint),
+        requestPromise(totalMarketCapApiEndPoint)
+      ])
+        .spread((responseFromRequest1, responseFromRequest2) => {
+          console.log('Fetched coins and total market cap')
+          const parsedCoins = parseCoins(JSON.parse(responseFromRequest1))
+          const parsedTotalMarketCap = parseTotalMarketCap(JSON.parse(responseFromRequest2))
+
           const dataToCache = {
             timeOfUpdate: moment(),
-            coins: getCoins(JSON.parse(body))
+            coins: parsedCoins,
+            totalMarketCap: parsedTotalMarketCap
           }
+
           cache.set(cacheKey, dataToCache, (err, success) => {
             if (success && !err) {
               console.log('Successfully cached data')
@@ -134,8 +147,11 @@ router.route('/')
               res.status(500)
             }
           })
-        }
-      })
+        })
+        .catch(err => {
+          console.error('Error:', err)
+          res.status(500)
+        })
     }
   })
 

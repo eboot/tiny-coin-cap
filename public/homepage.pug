@@ -12,7 +12,7 @@ html
     link(rel='stylesheet', href='pure.css')
     link(rel='stylesheet', href='main.css')
   body
-    div#top
+    div#align-center
       h1 Tiny Coin Cap
       p
         a(href='https://github.com/nitrohorse/tiny-coin-cap', target='_blank' rel='external noopener noreferrer') Source Code
@@ -28,6 +28,8 @@ html
       p Last updated #{timeOfUpdate}
         span  | Powered by 
         a(href='https://coinmarketcap.com/api/', target='_blank' rel='external noopener noreferrer') CoinMarketCap.com
+
+      p Total Market Cap: $#{totalMarketCap}
 
     table.pure-table.pure-table-horizontal
       thead
