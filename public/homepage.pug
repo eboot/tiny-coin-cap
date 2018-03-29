@@ -51,15 +51,21 @@ html
 
             if coin.percent_change_1h > 0
               td.change-increase.hide-on-mobile= coin.percent_change_1h
-            else
+            else if coin.percent_change_1h < 0
               td.change-decrease.hide-on-mobile= coin.percent_change_1h
+            else
+              td= coin.percent_change_1h
 
             if coin.percent_change_24h > 0
               td.change-increase= coin.percent_change_24h
-            else
+            else if coin.percent_change_24h < 0
               td.change-decrease= coin.percent_change_24h
+            else
+              td= coin.percent_change_24h
 
             if coin.percent_change_7d > 0
               td.change-increase= coin.percent_change_7d
-            else
+            else if coin.percent_change_7d < 0
               td.change-decrease= coin.percent_change_7d
+            else
+              td= coin.percent_change_7d

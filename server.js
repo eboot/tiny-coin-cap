@@ -39,6 +39,9 @@ const getValueInCache = key => {
 }
 
 const formatPercentage = percentage => {
+  if (!percentage) { // for newer coins, this may be null
+    return 'N/A'
+  }
   if (percentage[0] !== '-') {
     percentage = '+' + percentage
   }
