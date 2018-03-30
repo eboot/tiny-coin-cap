@@ -4,9 +4,9 @@
   "license": "GPL-3.0",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "serve": "nodemon server.js",
+    "start": "nodemon index.js",
     "lint": "standard",
     "lint:fix": "standard --fix"
   },
