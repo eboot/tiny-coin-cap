@@ -18,11 +18,11 @@ Since this is an open-source project hosted freely on [ZEIT](https://zeit.co/) u
 * `cd` into the cloned directory
 * Install tools:
 	* [Node.js](https://nodejs.org/en/)
-	* [yarn](https://yarnpkg.com/en/)
+	* [Yarn](https://yarnpkg.com/en/)
 * Install dependencies: 
 	* `yarn`
 * Start the server:
-  * `yarn serve`
+  * `yarn start`
 
 ## License
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fnitrohorse%2Ftiny-coin-cap.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fnitrohorse%2Ftiny-coin-cap?ref=badge_large)
