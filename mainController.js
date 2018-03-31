@@ -19,9 +19,9 @@ const mainController = (() => {
   }
 
   const getCoins = (req, res) => {
-    if (!cacheHelper.isCacheEmpty(cacheKey)) {
+    if (!cacheHelper.isEmpty(cacheKey)) {
       console.log('Cache not empty, returning value')
-      const cachedData = cacheHelper.getValueInCache(cacheKey)
+      const cachedData = cacheHelper.getValue(cacheKey)
       renderHomePage(res, cachedData)
     } else {
       console.log('Cache is empty, fetching data')
@@ -40,15 +40,9 @@ const mainController = (() => {
             totalMarketCap: parsedTotalMarketCap
           }
 
-          cacheHelper.setValueInCache(cacheKey, dataToCache, (err, success) => {
-            if (success && !err) {
-              console.log('Successfully cached data')
-              renderHomePage(res, dataToCache)
-            } else {
-              console.error('Error caching data')
-              res.status(500)
-            }
-          })
+          cacheHelper.setValue(cacheKey, dataToCache)
+          console.log('Successfully cached data')
+          renderHomePage(res, dataToCache)
         })
         .catch(err => {
           console.error('Error:', err)

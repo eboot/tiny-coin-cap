@@ -4,40 +4,38 @@ const NodeCache = require('node-cache')
 const cache = new NodeCache({ stdTTL: 360, checkperiod: 400 })
 
 const cacheHelper = (() => {
-  const doesKeyExistInCache = key => {
+  const doesKeyExist = key => {
     return cache.keys().length !== 0 && cache.keys().indexOf(key) !== -1
   }
 
-  const doesValueExistInCache = key => {
+  const doesValueExist = key => {
     return cache.get(key) !== undefined
   }
 
-  const isCacheEmpty = key => {
-    if (doesKeyExistInCache(key) && !doesValueExistInCache(key)) {
+  const isEmpty = key => {
+    if (doesKeyExist(key) && !doesValueExist(key)) {
       cache.flushAll()
       console.log('Cache is flushed')
       return true
     } else {
-      return !doesKeyExistInCache(key) && !doesValueExistInCache(key)
+      return !doesKeyExist(key) && !doesValueExist(key)
     }
   }
 
-  const getValueInCache = key => {
+  const getValue = key => {
     return cache.get(key)
   }
 
-  const setValueInCache = (key, value, callback) => {
-    cache.set(key, value, (err, success) => {
-      callback(err, success)
-    })
+  const setValue = (key, value) => {
+    return cache.set(key, value)
   }
 
   return {
-    doesKeyExistInCache,
-    doesValueExistInCache,
-    isCacheEmpty,
-    getValueInCache,
-    setValueInCache
+    doesKeyExist,
+    doesValueExist,
+    isEmpty,
+    getValue,
+    setValue
   }
 })()
 
